@@ -1,0 +1,23 @@
+name: Quick CI Demo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Kéo code về máy ảo
+        uses: actions/checkout@v4
+
+      - name: 2. Thiết lập môi trường Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 3. Chạy kiểm thử tự động
+        run: npm test
